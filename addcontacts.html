@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
 </head>
 <body>
 </br>
     <form id="editForm">
-        <label for="firstnme">First Name</label>
+        <label for="firstname">First Name</label>
         <input type="text" name="firstname" id="firstname"></br>
         <label for="lastname">Last Name</label>
         <input type="text" name="lastname" id="lastname"></br>
@@ -23,6 +23,31 @@
     
     <script src="config.js"></script>
     <script>
+
+        function submitForm(e) {
+            e.preventDefault();
+
+            const form = new FormData(document.querySelector('#editform'));
+            form.append('apiKey', apiKey);
+        }
+
+        fetch(rootPath =  'controller/insert-contact',{
+            method: 'POST',
+            headers:{'Accept': 'application/json *.*'},
+            body: form 
+        })
+        .then(function(Response){
+            return response.text();
+        })
+        .then(function(datat){
+            if (data =="1"){
+                alert("Contact Added.")
+                //link to home page
+            }else {
+                alert(data);
+                //link to home page
+            }
+        })
 
 
     </script>
