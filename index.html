@@ -16,7 +16,7 @@
 
     <script>
 
-        document.getElementById("refresh").addEventListener('click' , fetchContatcts);
+        document.getElementById("refresh").addEventListenera("click", fetchContacts)
 
         function fetchContacts() {
             fetch(rootPath + "controller/get-contacts/")
@@ -24,8 +24,7 @@
                     return response.json();
                 })
                 .then(function (data) {
-                    displayOutput(data);
-                    //console.log(data);    
+                    displayOutput(data);    
                 }) 
         }
 

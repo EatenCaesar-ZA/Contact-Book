@@ -22,32 +22,42 @@
     <button id="homelink" type="button">Home</button>
     
     <script src="config.js"></script>
+
     <script>
 
-        function submitForm(e) {
+        document.getElementById("submitForm").addEventListener('click' , submitForm);
+        document.getElementById("homelink").addEventListener('click', homeLink);
+
+        function submitForm(e){
             e.preventDefault();
 
             const form = new FormData(document.querySelector('#editform'));
             form.append('apiKey', apiKey);
-        }
+        
 
-        fetch(rootPath =  'controller/insert-contact',{
+        fetch(rootPath + 'controller/insert-contact',{
             method: 'POST',
-            headers:{'Accept': 'application/json *.*'},
+            headers:{'Accept': 'application/json, *.*'},
             body: form 
         })
         .then(function(Response){
-            return response.text();
+            return respnse.text();
         })
-        .then(function(datat){
+        .then(function(data){
             if (data =="1"){
                 alert("Contact Added.")
-                //link to home page
+                homeLink();
             }else {
                 alert(data);
-                //link to home page
+                homeLink();
             }
         })
+    }
+
+        function homeLink() {
+            window.open("index.html", "_self");
+        }
+    
 
 
     </script>
