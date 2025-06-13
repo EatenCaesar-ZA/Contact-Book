@@ -37,11 +37,11 @@
 
         fetch(rootPath + 'controller/insert-contact/',{
             method: 'POST',
-            headers:{'Accept', 'application/json, *.*'},
+            headers:{'Accept' : 'application/json, *.*'},
             body: form 
         })
         .then(function(Response){
-            return respnse.text();
+            return response.text();
         })
         .then(function(data){
             if (data =="1"){
