@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
 </head>
-<body>
+<body onload="getContact()">
+    <div id="avatarlabel"></div>
 </br>
     <form id="editForm">
         <label for="firstname">First Name</label>
@@ -27,7 +28,10 @@
     <script src="config.js"></script>
 
     <script>
+        
+        document.getElementById("homeLink").addEventListener('click', homeLink);
         var id=getId();
+        console.log("the id is :" + id);
 
         
         function getId(){
@@ -37,6 +41,22 @@
             return id;
 
         }
+        
+        function getContact() {
+            fetch(rootPath + 'controller/get-contacts/?id=' + id)
+           .then(function (response) {
+            return response.json();
+        })
+           .then(function (data) {
+           displayOutput(data);    
+        }) 
+        }
+
+        function homeLink() {
+            window.open("index.html", "_self");
+        }
+
+        
     </script>
 </body>
 </html>
