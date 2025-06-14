@@ -28,15 +28,15 @@
     <script src="config.js"></script>
 
     <script>
-        
-        document.getElementById("homeLink").addEventListener('click', homeLink);
+
+        document.getElementById("homelink").addEventListener('click', homeLink);
         var id=getId();
         console.log("the id is :" + id);
 
         
         function getId(){
             var url = window.location.href;
-            var pos = url.sesarch("=");
+            var pos = url.search("=");
             var id = url.slice(pos + 1);
             return id;
 
